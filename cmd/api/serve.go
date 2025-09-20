@@ -9,13 +9,10 @@ import (
 	"syscall"
 	"time"
 
-	"PulseCheck/internal/server"
+	"github.com/Beeram12/gomonitor/internal/server"
 
 	"github.com/spf13/cobra"
 )
-
-
-
 
 func gracefulShutdown(apiServer *http.Server, done chan bool) {
 	// Create context that listens for the interrupt signal from the OS.
@@ -42,22 +39,22 @@ func gracefulShutdown(apiServer *http.Server, done chan bool) {
 	done <- true
 }
 
-var serveCmd = &cobra.Command{
-	Use: "serve",
+var createCmd = &cobra.Command{
+	Use:   "create",
 	Short: "Starts the PulseCheck web server",
-	Run: func(cmd *cobra.Command, args []string){
+	Run: func(cmd *cobra.Command, args []string) {
 		server := server.NewServer()
 
 		// Create a done channel to signal when the shutdown is complete
-		done := make(chan bool,1)
-	
+		done := make(chan bool, 1)
+
 		// Run graceful shutdown in a separate goroutine
-		go gracefulShutdown(server,done)
+		go gracefulShutdown(server, done)
 
 		log.Printf("Server starting on %s...", server.Addr)
 		err := server.ListenAndServe()
-		if err != nil && err != http.ErrServerClosed{
-			panic(fmt.Sprintf("http server error: %s",err))
+		if err != nil && err != http.ErrServerClosed {
+			panic(fmt.Sprintf("http server error: %s", err))
 		}
 
 		// Wait for the graceful shutdown to complete
@@ -66,6 +63,6 @@ var serveCmd = &cobra.Command{
 	},
 }
 
-func init(){
-	rootCmd.AddCommand()
+func init() {
+	rootCmd.AddCommand(createCmd)
 }
