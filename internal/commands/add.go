@@ -2,22 +2,27 @@ package commands
 
 import (
 	"fmt"
+	"log"
 
+	"github.com/Beeram12/gomonitor/internal/config"
 	"github.com/spf13/cobra"
 )
 
-
 var addCmd = &cobra.Command{
-	Use: "Add [url]",
+	Use:   "add [url]",
 	Short: "Add a new URL to monitor",
-	Args: cobra.ExactArgs(1),
+	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		urlToAdd := args[0]
-		fmt.Printf("Adding %s to monitoring list...\n",urlToAdd)
-		//  Here, you would call your core logic to save the URL to your config file.
+
+		err := config.AddURL(urlToAdd)
+		if err != nil {
+			log.Fatalf("Error adding URL: %v", err)
+		}
+		fmt.Printf("Successfully added %s to the monitoring list.\n", urlToAdd)
 	},
 }
 
-func init(){
+func init() {
 	rootCmd.AddCommand(addCmd)
 }
