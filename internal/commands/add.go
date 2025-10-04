@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/Beeram12/gomonitor/internal/config"
+	"github.com/Beeram12/gomonitor/pkg/config"
 	"github.com/spf13/cobra"
 )
 
