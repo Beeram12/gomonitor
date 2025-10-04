@@ -1,6 +1,6 @@
-# Project PulseCheck
+# Project Gomonitor
 
-One Paragraph of project description goes here
+The project starts as a simple command-line application that uses Go's concurrency to efficiently check if a list of websites is online. It then progressively evolves into a full-fledged monitoring service complete with a database for storing historical data, real-time Slack notifications for outages, a REST API, and a web dashboard for visualizing uptime.
 
 ## Getting Started
 
