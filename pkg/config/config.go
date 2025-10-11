@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"os"
 
 	"gopkg.in/yaml.v3"
@@ -52,6 +53,22 @@ func AddURL(url string) error {
 	}
 
 	cfg.URLs = append(cfg.URLs, url)
+
+	return cfg.SaveConfigFile()
+}
+
+func RemoveURLByValue(index int) error {
+
+	cfg, err := LoadConfig()
+	if err != nil {
+		return err
+	}
+
+	if index < 0 || index >= len(cfg.URLs) {
+		return fmt.Errorf("invalid index: %d", index)
+	}
+
+	cfg.URLs = append(cfg.URLs[:index], cfg.URLs[index+1:]...)
 
 	return cfg.SaveConfigFile()
 }
