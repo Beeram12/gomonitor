@@ -10,10 +10,22 @@ import (
 	"github.com/spf13/cobra"
 )
 
+const banner = `
+ ██████╗  ██████╗     ███╗   ███╗ ██████╗ ███╗   ██╗██╗████████╗ ██████╗ ██████╗ 
+██╔════╝ ██╔═══██╗    ████╗ ████║██╔═══██╗████╗  ██║██║╚══██╔══╝██╔═══██╗██╔══██╗
+██║  ███╗██║   ██║    ██╔████╔██║██║   ██║██╔██╗ ██║██║   ██║   ██║   ██║██████╔╝
+██║   ██║██║   ██║    ██║╚██╔╝██║██║   ██║██║╚██╗██║██║   ██║   ██║   ██║██╔══██╗
+╚██████╔╝╚██████╔╝    ██║ ╚═╝ ██║╚██████╔╝██║ ╚████║██║   ██║   ╚██████╔╝██║  ██║
+ ╚═════╝  ╚═════╝     ╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝
+			Live Uptime Monitoring`
+
 var startCmd = &cobra.Command{
 	Use:   "start",
 	Short: "Starts the interactive monitoring dashboard",
 	Run: func(cmd *cobra.Command, args []string) {
+
+		fmt.Println(banner)
+
 		cfg, err := config.LoadConfig()
 		if err != nil {
 			log.Fatalf("Could not load config: %v", err)

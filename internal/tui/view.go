@@ -24,7 +24,6 @@ func (m model) View() string {
 func (m model) viewDashboard() string {
 	var b strings.Builder
 
-	b.WriteString("***GoMonitor is Live***\n\n")
 
 	header := lipgloss.NewStyle().Bold(true).Render(fmt.Sprintf("%-50s | %s", "URL", "STATUS"))
 
