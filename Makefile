@@ -1,43 +1,37 @@
-# Simple Makefile for a Go project
+# Makefile for go monitor project
 
-# Build the application
-all: build test
+#---- Variables ----
+binary_name=gomonitor
+package_path=./cmd/gomonitor
+build_dir=./bin
 
+# ---- Help ----
+.DEFAULT_GOAL := help
+
+.PHONY:	help
+help:
+	@echo "Available Commands:"
+	@echo "  make build      - Compiles the application into the $(BUILD_DIR) directory."
+	@echo "  make run        - Builds and runs the application"
+	@echo "  make clean      - Removes build artifacts"
+
+# ---- Build Targets ----
+.PHONY:	build
 build:
-	@echo "Building..."
-	
-	
-	@go build -o main cmd/api/main.go
+	@mkdir -p $(build_dir)
+	@echo "Building $(binary_name)..."
+	@go build -o $(build_dir)/$(binary_name) $(package_path)
+	@echo "$(binary_name) built sucessfully"
 
-# Run the application
-run:
-	@go run cmd/api/main.go
+.PHONY:	run
+run: build
+	@echo "Starting $(binary_name)"
+	@./$(build_dir)/${binary_name} start
 
-# Test the application
-test:
-	@echo "Testing..."
-	@go test ./... -v
-
-# Clean the binary
+.PHONY:	clean
 clean:
-	@echo "Cleaning..."
-	@rm -f main
+	@echo "Cleaning up..."
+	@rm -rf $(build_dir)
+	@rm -f config.yaml
 
-# Live Reload
-watch:
-	@if command -v air > /dev/null; then \
-            air; \
-            echo "Watching...";\
-        else \
-            read -p "Go's 'air' is not installed on your machine. Do you want to install it? [Y/n] " choice; \
-            if [ "$$choice" != "n" ] && [ "$$choice" != "N" ]; then \
-                go install github.com/air-verse/air@latest; \
-                air; \
-                echo "Watching...";\
-            else \
-                echo "You chose not to install air. Exiting..."; \
-                exit 1; \
-            fi; \
-        fi
 
-.PHONY: all build run test clean watch
