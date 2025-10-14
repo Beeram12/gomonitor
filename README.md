@@ -1,22 +1,22 @@
 # Gomonitor
 Gomonitor is a lightweight and concurrent website uptime monitoring service built with Go. It starts as a simple command-line application that uses Go’s concurrency to efficiently check if a list of websites is online. It then progressively evolves into a full-fledged monitoring service complete with a database for storing historical data, real-time Slack notifications for outages, a REST API, and a web dashboard for visualizing uptime.
 
-# Project Demo
+## Project Demo
 (This is where you can embed a GIF or a link to a video showcasing your TUI dashboard in action.)
 
-# Features
+## Features
 - High-Performance Concurrent Checking: Uses Go’s goroutines to check hundreds of websites simultaneously without blocking.
 - Interactive TUI Dashboard: A real-time Terminal User Interface built with Bubble Tea to monitor services live from your terminal.
 - Robust CLI Commands: A powerful and scalable command structure built with Cobra for easy management (start, add, list, remove).
 - Simple Configuration: Manages monitored URLs through a simple config.yaml file.
 - Future-Proof Architecture: Designed to evolve with a clean separation of concerns, ready for database integration, a REST API, and a full web frontend.
 
-# Architecture
+## Architecture
 The project follows the standard Go project layout to ensure a clean separation between the application code and reusable libraries. This makes the project scalable, maintainable, and easy to contribute to.
 
 (This is where you can add the architecture diagram image you created.)
 
-# Getting Started
+## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ###  Prerequisites
@@ -49,7 +49,7 @@ This removes the gomonitor binary and the config.yaml file.
 ```
 make clean
 ```
-# Directory Structure
+## Directory Structure
 The project’s directory structure is organized for modularity and scalability:
 ```
 gomonitor/
@@ -66,5 +66,5 @@ gomonitor/
 ├── Makefile               # Automates common development tasks.
 └── README.md              # You are here!
 ```
-# License
+## License
 This project is licensed under the MIT License - see the LICENSE.md file for details.
