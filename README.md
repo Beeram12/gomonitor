@@ -1,9 +1,6 @@
 # Gomonitor
 Gomonitor is a lightweight and concurrent website uptime monitoring service built with Go. It starts as a simple command-line application that uses Go’s concurrency to efficiently check if a list of websites is online. It then progressively evolves into a full-fledged monitoring service complete with a database for storing historical data, real-time Slack notifications for outages, a REST API, and a web dashboard for visualizing uptime.
 
-## Project Demo
-(This is where you can embed a GIF or a link to a video showcasing your TUI dashboard in action.)
-
 ## Features
 - High-Performance Concurrent Checking: Uses Go’s goroutines to check hundreds of websites simultaneously without blocking.
 - Interactive TUI Dashboard: A real-time Terminal User Interface built with Bubble Tea to monitor services live from your terminal.
@@ -14,7 +11,8 @@ Gomonitor is a lightweight and concurrent website uptime monitoring service buil
 ## Architecture
 The project follows the standard Go project layout to ensure a clean separation between the application code and reusable libraries. This makes the project scalable, maintainable, and easy to contribute to.
 
-(This is where you can add the architecture diagram image you created.)
+<img width="3533" height="1498" alt="go-monitor" src="https://github.com/user-attachments/assets/f75ae46f-347f-46b2-98ea-6516c346e764" />
+
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
