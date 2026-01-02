@@ -47,6 +47,9 @@ This removes the gomonitor binary and the config.yaml file.
 ```
 make clean
 ```
+## Demo
+<img width="1800" height="760" alt="image" src="https://github.com/user-attachments/assets/7f18d12a-1acd-4b1a-b3dc-5165a3ed6ed0" />
+
 ## Directory Structure
 The project’s directory structure is organized for modularity and scalability:
 ```
